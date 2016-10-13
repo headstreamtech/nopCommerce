@@ -1616,7 +1616,7 @@ namespace Nop.Admin.Controllers
             if (customer == null)
                 throw new ArgumentException("No customer found with the specified id");
 
-            var rewardPoints = _rewardPointService.GetRewardPointsHistory(customer.Id, true, command.Page - 1, command.PageSize);
+            var rewardPoints = _rewardPointService.GetRewardPointsHistory(customer.Id, true, true, command.Page - 1, command.PageSize);
             var gridModel = new DataSourceResult
             {
                 Data = rewardPoints.Select(rph =>

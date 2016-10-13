@@ -371,6 +371,15 @@ set @resources='
   <LocaleResource Name="Admin.Configuration.Settings.RewardPoints.AwardingDelay.Hint">
     <Value>Specify delay before awarding</Value>
   </LocaleResource>
+  <LocaleResource Name="Enums.Nop.Core.Domain.Customers.RewardPointsAccruingDelayPeriod.Days">
+    <Value>Days</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.Nop.Core.Domain.Customers.RewardPointsAccruingDelayPeriod.Hours">
+    <Value>Hours</Value>
+  </LocaleResource>
+  <LocaleResource Name="RewardPoints.AccruedLater">
+    <Value>The points will be accrued on {0}</Value>
+  </LocaleResource>
 </Language>
 '
 

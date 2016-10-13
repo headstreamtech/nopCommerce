@@ -1,5 +1,4 @@
-﻿using System;
-using Nop.Core.Configuration;
+﻿using Nop.Core.Configuration;
 using Nop.Core.Domain.Orders;
 
 namespace Nop.Core.Domain.Customers
@@ -70,45 +69,5 @@ namespace Nop.Core.Domain.Customers
         /// Gets or sets the page size is for history of reward points on my account page
         /// </summary>
         public int PageSize { get; set; }
-    }
-
-    /// <summary>
-    /// Represents the period of delay
-    /// </summary>
-    public enum DelayPeriod
-    {
-        /// <summary>
-        /// Hours
-        /// </summary>
-        Hours = 0,
-        /// <summary>
-        /// Days
-        /// </summary>
-        Days = 1
-    }
-
-    /// <summary>
-    /// DelayPeriod Extensions
-    /// </summary>
-    public static class DelayPeriodExtensions
-    {
-        /// <summary>
-        /// Returns delay in hours
-        /// </summary>
-        /// <param name="period">Delay period</param>
-        /// <param name="value">Value of delay</param>
-        /// <returns>Value of delay in hours</returns>
-        public static int ToHours(this DelayPeriod period, int value)
-        {
-            switch (period)
-            {
-                case DelayPeriod.Hours:
-                    return value;
-                case DelayPeriod.Days:
-                    return value * 24;
-                default:
-                    throw new ArgumentOutOfRangeException("DelayPeriod");
-            }
-        }
     }
 }

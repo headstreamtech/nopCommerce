@@ -135,7 +135,7 @@
                                         @Html.ValidationMessageFor(model => model.AwardingDelay)
                                     </div>
                                     <div class="col-md-3">
-                                        @Html.NopDropDownListFor(model => model.AwardingDelayPeriodId, ((DelayPeriod)Model.AwardingDelayPeriodId).ToSelectList(), new { style = "max-width: 200px;" })
+                                        @Html.NopDropDownListFor(model => model.AwardingDelayPeriodId, ((RewardPointsAccruingDelayPeriod)Model.AwardingDelayPeriodId).ToSelectList(), new { style = "max-width: 200px;" })
                                         @Html.ValidationMessageFor(model => model.AwardingDelayPeriodId)
                                     </div>
                                 </div>

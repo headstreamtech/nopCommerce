@@ -15,11 +15,12 @@ namespace Nop.Services.Orders
         /// </summary>
         /// <param name="customerId">Customer identifier; 0 to load all records</param>
         /// <param name="showHidden">A value indicating whether to show hidden records (filter by current store if possible)</param>
+        /// <param name="showNotAccrued">A value indicating whether to show reward points that did not yet accrued</param>
         /// <param name="pageIndex">Page index</param>
         /// <param name="pageSize">Page size</param>
         /// <returns>Reward point history records</returns>
         IPagedList<RewardPointsHistory> GetRewardPointsHistory(int customerId = 0, bool showHidden = false, 
-            int pageIndex = 0, int pageSize = int.MaxValue);
+            bool showNotAccrued = false, int pageIndex = 0, int pageSize = int.MaxValue);
 
         /// <summary>
         /// Add reward points history record

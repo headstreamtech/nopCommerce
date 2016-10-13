@@ -12927,6 +12927,12 @@
   <LocaleResource Name="Enums.Nop.Core.Domain.Customers.PasswordFormat.Hashed">
     <Value>Hashed</Value>
   </LocaleResource>
+  <LocaleResource Name="Enums.Nop.Core.Domain.Customers.RewardPointsAccruingDelayPeriod.Days">
+    <Value>Days</Value>
+  </LocaleResource>
+  <LocaleResource Name="Enums.Nop.Core.Domain.Customers.RewardPointsAccruingDelayPeriod.Hours">
+    <Value>Hours</Value>
+  </LocaleResource>
   <LocaleResource Name="Enums.Nop.Core.Domain.Discounts.DiscountLimitationType.NTimesOnly">
     <Value>N times only</Value>
   </LocaleResource>
@@ -14972,6 +14978,9 @@
   </LocaleResource>
   <LocaleResource Name="Reviews.Write">
     <Value>Write your own review</Value>
+  </LocaleResource>
+  <LocaleResource Name="RewardPoints.AccruedLater">
+    <Value>The points will be accrued on {0}</Value>
   </LocaleResource>
   <LocaleResource Name="RewardPoints.CurrentBalance">
     <Value>Your current balance is {0} reward points ({1}).</Value>

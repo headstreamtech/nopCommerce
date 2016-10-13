@@ -585,16 +585,20 @@ namespace Nop.Web.Controllers
             var customer = _workContext.CurrentCustomer;
             var pageSize = _rewardPointsSettings.PageSize;
             var model = new CustomerRewardPointsModel();
-            var list = _rewardPointService.GetRewardPointsHistory(customer.Id, pageIndex: --page ?? 0, pageSize: pageSize);
+            var list = _rewardPointService.GetRewardPointsHistory(customer.Id, showNotAccrued: true, pageIndex: --page ?? 0, pageSize: pageSize);
 
-            model.RewardPoints = list.Where(rph => rph.PointsBalance.HasValue).Select(rph => 
-                new CustomerRewardPointsModel.RewardPointsHistoryModel
+            model.RewardPoints = list.Select(rph =>
+            {
+                var accrualDate = _dateTimeHelper.ConvertToUserTime(rph.CreatedOnUtc, DateTimeKind.Utc);
+                return new CustomerRewardPointsModel.RewardPointsHistoryModel
                 {
                     Points = rph.Points,
-                    PointsBalance = rph.PointsBalance.Value,
+                    PointsBalance = rph.PointsBalance.HasValue ? rph.PointsBalance.ToString()
+                        : string.Format(_localizationService.GetResource("RewardPoints.AccruedLater"), accrualDate),
                     Message = rph.Message,
-                    CreatedOn = _dateTimeHelper.ConvertToUserTime(rph.CreatedOnUtc, DateTimeKind.Utc)
-                }).ToList();
+                    CreatedOn = accrualDate
+                };
+            }).ToList();
 
             model.PagerModel = new PagerModel
             {
