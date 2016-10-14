@@ -15,12 +15,12 @@ namespace Nop.Services.Orders
         /// </summary>
         /// <param name="customerId">Customer identifier; 0 to load all records</param>
         /// <param name="showHidden">A value indicating whether to show hidden records (filter by current store if possible)</param>
-        /// <param name="showNotAccrued">A value indicating whether to show reward points that did not yet accrued</param>
+        /// <param name="showNotActivated">A value indicating whether to show reward points that did not yet activated</param>
         /// <param name="pageIndex">Page index</param>
         /// <param name="pageSize">Page size</param>
         /// <returns>Reward point history records</returns>
         IPagedList<RewardPointsHistory> GetRewardPointsHistory(int customerId = 0, bool showHidden = false, 
-            bool showNotAccrued = false, int pageIndex = 0, int pageSize = int.MaxValue);
+            bool showNotActivated = false, int pageIndex = 0, int pageSize = int.MaxValue);
 
         /// <summary>
         /// Add reward points history record
@@ -31,10 +31,10 @@ namespace Nop.Services.Orders
         /// <param name="message">Message</param>
         /// <param name="usedWithOrder">the order for which points were redeemed as a payment</param>
         /// <param name="usedAmount">Used amount</param>
-        /// <param name="accrualDate">Date and time of accrual reward points; pass null to immediately accruing</param>
+        /// <param name="activatingDate">Date and time of activating reward points; pass null to immediately activating</param>
         void AddRewardPointsHistoryEntry(Customer customer,
             int points, int storeId, string message = "",
-            Order usedWithOrder = null, decimal usedAmount = 0M, DateTime? accrualDate = null);
+            Order usedWithOrder = null, decimal usedAmount = 0M, DateTime? activatingDate = null);
 
         /// <summary>
         /// Gets reward points balance

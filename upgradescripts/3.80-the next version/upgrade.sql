@@ -356,29 +356,29 @@ set @resources='
   <LocaleResource Name="Admin.Configuration.Settings.Catalog.ShowSkuOnProductDetailsPage.Hint">
     <Value>Check to show product SKU on the product details page in public store.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Customers.Customers.RewardPoints.AccruedLater">
-    <Value>The points will be accrued on {0}</Value>
+  <LocaleResource Name="Admin.Configuration.Settings.RewardPoints.ActivatePointsImmediately">
+    <Value>Activate points immediately</Value>
   </LocaleResource>
-    <LocaleResource Name="Admin.Configuration.Settings.RewardPoints.AwardImmediately">
-    <Value>Immediately awarding</Value>
+  <LocaleResource Name="Admin.Configuration.Settings.RewardPoints.ActivatePointsImmediately.Hint">
+    <Value>Activates bonus points immediately after their calculation</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Settings.RewardPoints.AwardImmediately.Hint">
-    <Value>Immediately award reward points</Value>
+  <LocaleResource Name="Admin.Configuration.Settings.RewardPoints.ActivationDelay">
+    <Value>Reward points activation</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Settings.RewardPoints.AwardingDelay">
-    <Value>Awarding delay</Value>
+  <LocaleResource Name="Admin.Configuration.Settings.RewardPoints.ActivationDelay.Hint">
+    <Value>Specify how many days (hours) must elapse before earned points become active. Points earned by purchase cannot be redeemed until activated. For example, you may set the days before the points become available to 7. In this case, the points earned will be available for spending 7 days after the order gets chosen awarded status.</Value>
   </LocaleResource>
-  <LocaleResource Name="Admin.Configuration.Settings.RewardPoints.AwardingDelay.Hint">
-    <Value>Specify delay before awarding</Value>
+  <LocaleResource Name="Admin.Customers.Customers.RewardPoints.ActivatedLater">
+    <Value>The points will be activated on {0}</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.Nop.Core.Domain.Customers.RewardPointsAccruingDelayPeriod.Days">
+  <LocaleResource Name="Enums.Nop.Core.Domain.Customers.RewardPointsActivatingDelayPeriod.Days">
     <Value>Days</Value>
   </LocaleResource>
-  <LocaleResource Name="Enums.Nop.Core.Domain.Customers.RewardPointsAccruingDelayPeriod.Hours">
+  <LocaleResource Name="Enums.Nop.Core.Domain.Customers.RewardPointsActivatingDelayPeriod.Hours">
     <Value>Hours</Value>
   </LocaleResource>
-  <LocaleResource Name="RewardPoints.AccruedLater">
-    <Value>The points will be accrued on {0}</Value>
+  <LocaleResource Name="RewardPoints.ActivatedLater">
+    <Value>The points will be activated on {0}</Value>
   </LocaleResource>
 </Language>
 '
@@ -1016,17 +1016,17 @@ ALTER TABLE [RewardPointsHistory] ALTER COLUMN [PointsBalance] int NULL
 GO
 
 --new setting
-IF NOT EXISTS (SELECT 1 FROM [Setting] WHERE [name] = N'rewardpointssettings.awardingdelay')
+IF NOT EXISTS (SELECT 1 FROM [Setting] WHERE [name] = N'rewardpointssettings.activationdelay')
 BEGIN
 	INSERT [Setting] ([Name], [Value], [StoreId])
-	VALUES (N'rewardpointssettings.awardingdelay', N'0', 0)
+	VALUES (N'rewardpointssettings.activationdelay', N'0', 0)
 END
 GO
 
 --new setting
-IF NOT EXISTS (SELECT 1 FROM [Setting] WHERE [name] = N'rewardpointssettings.awardingdelayperiodid')
+IF NOT EXISTS (SELECT 1 FROM [Setting] WHERE [name] = N'rewardpointssettings.activationdelayperiodid')
 BEGIN
 	INSERT [Setting] ([Name], [Value], [StoreId])
-	VALUES (N'rewardpointssettings.awardingdelayperiodid', N'0', 0)
+	VALUES (N'rewardpointssettings.activationdelayperiodid', N'0', 0)
 END
 GO

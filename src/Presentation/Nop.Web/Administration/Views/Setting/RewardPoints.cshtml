@@ -116,27 +116,27 @@
                         </div>
                         <div class="form-group advanced-setting">
                             <div class="col-md-3">
-                                @Html.NopLabelFor(model => model.AwardImmediately)
+                                @Html.NopLabelFor(model => model.ActivatePointsImmediately)
                             </div>
                             <div class="col-md-9">
-                                @Html.NopEditorFor(model => model.AwardImmediately)
-                                @Html.ValidationMessageFor(model => model.AwardImmediately)
+                                @Html.NopEditorFor(model => model.ActivatePointsImmediately)
+                                @Html.ValidationMessageFor(model => model.ActivatePointsImmediately)
                             </div>
                         </div>
-                        <div class="form-group advanced-setting" id="pnl-awarding-delay">
+                        <div class="form-group advanced-setting" id="pnl-activating-delay">
                             <div class="col-md-3">
-                                @Html.OverrideStoreCheckboxFor(model => model.AwardingDelay_OverrideForStore, model => model.AwardingDelay, Model.ActiveStoreScopeConfiguration)
-                                @Html.NopLabelFor(model => model.AwardingDelay)
+                                @Html.OverrideStoreCheckboxFor(model => model.ActivationDelay_OverrideForStore, model => model.ActivationDelay, Model.ActiveStoreScopeConfiguration)
+                                @Html.NopLabelFor(model => model.ActivationDelay)
                             </div>
                             <div class="col-md-9">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        @Html.NopEditorFor(model => model.AwardingDelay)
-                                        @Html.ValidationMessageFor(model => model.AwardingDelay)
+                                        @Html.NopEditorFor(model => model.ActivationDelay)
+                                        @Html.ValidationMessageFor(model => model.ActivationDelay)
                                     </div>
                                     <div class="col-md-3">
-                                        @Html.NopDropDownListFor(model => model.AwardingDelayPeriodId, ((RewardPointsAccruingDelayPeriod)Model.AwardingDelayPeriodId).ToSelectList(), new { style = "max-width: 200px;" })
-                                        @Html.ValidationMessageFor(model => model.AwardingDelayPeriodId)
+                                        @Html.NopDropDownListFor(model => model.ActivationDelayPeriodId, ((RewardPointsActivatingDelayPeriod)Model.ActivationDelayPeriodId).ToSelectList(), new { style = "max-width: 200px;" })
+                                        @Html.ValidationMessageFor(model => model.ActivationDelayPeriodId)
                                     </div>
                                 </div>
                             </div>
@@ -184,15 +184,15 @@
                     
                     <script type="text/javascript">
                         $(document).ready(function () {
-                            $("#@Html.FieldIdFor(model => model.AwardImmediately)").click(awardImmediately);
-                            awardImmediately();
+                            $("#@Html.FieldIdFor(model => model.ActivatePointsImmediately)").click(activatePointsImmediately);
+                            activatePointsImmediately();
                         });
 
-                        function awardImmediately() {
-                            if ($('#@Html.FieldIdFor(model => model.AwardImmediately)').is(':checked'))
-                                $('#pnl-awarding-delay').hide();
+                        function activatePointsImmediately() {
+                            if ($('#@Html.FieldIdFor(model => model.ActivatePointsImmediately)').is(':checked'))
+                                $('#pnl-activating-delay').hide();
                             else
-                                $('#pnl-awarding-delay').show();
+                                $('#pnl-activating-delay').show();
                         }
                     </script>
 

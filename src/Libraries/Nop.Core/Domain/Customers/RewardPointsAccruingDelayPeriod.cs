@@ -5,7 +5,7 @@ namespace Nop.Core.Domain.Customers
     /// <summary>
     /// Represents the period of delay
     /// </summary>
-    public enum RewardPointsAccruingDelayPeriod
+    public enum RewardPointsActivatingDelayPeriod
     {
         /// <summary>
         /// Hours
@@ -18,26 +18,26 @@ namespace Nop.Core.Domain.Customers
     }
 
     /// <summary>
-    /// RewardPointsAccruingDelayPeriod Extensions
+    /// RewardPointsActivatingDelayPeriod Extensions
     /// </summary>
-    public static class RewardPointsAccruingDelayPeriodExtensions
+    public static class RewardPointsActivatingDelayPeriodExtensions
     {
         /// <summary>
-        /// Returns a delay period before accruing points in hours
+        /// Returns a delay period before activating points in hours
         /// </summary>
-        /// <param name="period">Reward points accruing delay period</param>
+        /// <param name="period">Reward points activating delay period</param>
         /// <param name="value">Value of delay</param>
         /// <returns>Value of delay in hours</returns>
-        public static int ToHours(this RewardPointsAccruingDelayPeriod period, int value)
+        public static int ToHours(this RewardPointsActivatingDelayPeriod period, int value)
         {
             switch (period)
             {
-                case RewardPointsAccruingDelayPeriod.Hours:
+                case RewardPointsActivatingDelayPeriod.Hours:
                     return value;
-                case RewardPointsAccruingDelayPeriod.Days:
+                case RewardPointsActivatingDelayPeriod.Days:
                     return value * 24;
                 default:
-                    throw new ArgumentOutOfRangeException("RewardPointsAccruingDelayPeriod");
+                    throw new ArgumentOutOfRangeException("RewardPointsActivatingDelayPeriod");
             }
         }
     }

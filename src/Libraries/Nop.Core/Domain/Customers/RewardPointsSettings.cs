@@ -41,14 +41,14 @@ namespace Nop.Core.Domain.Customers
         public OrderStatus PointsForPurchases_Awarded { get; set; }
 
         /// <summary>
-        /// Gets or sets a delay before awarding
+        /// Gets or sets a delay before activation points
         /// </summary>
-        public int AwardingDelay { get; set; }
+        public int ActivationDelay { get; set; }
 
         /// <summary>
-        /// Gets or sets the period of awarding delay
+        /// Gets or sets the period of activation delay
         /// </summary>
-        public int AwardingDelayPeriodId { get; set; }
+        public int ActivationDelayPeriodId { get; set; }
 
         /// <summary>
         /// Points are canceled when the order is
