@@ -362,6 +362,9 @@ set @resources='
   <LocaleResource Name="Admin.Orders.Fields.CancelOrderTotals">
     <Value></Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.System.Warnings.URL.Reserved">
+    <Value>Entered page name already exists, so it will be replaced by ''{0}''</Value>
+  </LocaleResource>
 </Language>
 '
 
