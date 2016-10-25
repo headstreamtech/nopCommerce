@@ -1,0 +1,9 @@
+﻿Group: Owin
+FriendlyName: Owin Cookie Authentication
+SystemName: Owin.CookieAuthentication
+Version: 1.0
+SupportedVersions: 3.80
+Author: HeadStreams
+DisplayOrder: 1
+FileName: Nop.Plugin.Owin.CookieAuthentication.dll
+Description: This plugin enables OWIN cookie middleware
