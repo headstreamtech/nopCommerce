@@ -1,0 +1,21 @@
+﻿.header-menu {
+    background-color: #392959;
+}
+
+.category-cap .header-menu {
+    background-color: #FF6600;
+}
+
+.category-transcend .header-menu {
+    background-color: #5F82B4;
+}
+
+.top-menu a {
+    color: #fff;
+    font-weight: bold;
+}
+
+.category-cap .top-menu a {
+    color: #333;
+}
+

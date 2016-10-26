@@ -1,0 +1,12 @@
+﻿
+
+
+
+26 Oct 2016
+	* Based the new theme Fatech on DefaultClean (src\Presentation\Nop.Web\Themes\FaTech)
+	* Added FaTech\Content\css\fatech.css in FaTech\Views\Shared\Head.cshtml
+	* Changed FaTech\Content\images\logo.png to the Faulkner Tech logo
+	* Added FaTech\FaTechExtensions.cs to resolve the category and called it to set the Body Class in FaTech\Views\Shared\_Root.Head.cshtml
+
+25 Oct 2016
+	* Began Setting up the site and data and documenting steps/features in https://docs.google.com/document/d/1GRSnsfU2jh8KlnSkyqmjtc_FTMdPhEzi6YwtOUZJKqw/edit
