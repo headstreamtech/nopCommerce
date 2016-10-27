@@ -278,7 +278,8 @@ namespace Nop.Web.Framework
             builder.RegisterType<PaymentService>().As<IPaymentService>().InstancePerLifetimeScope();
 
             builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerLifetimeScope();
-            builder.RegisterType<FormsAuthenticationService>().As<IAuthenticationService>().InstancePerLifetimeScope();
+            //builder.RegisterType<FormsAuthenticationService>().As<IAuthenticationService>().InstancePerLifetimeScope();
+            builder.RegisterType<ClaimsAuthenticationService>().As<IAuthenticationService>().InstancePerLifetimeScope();
 
 
             //use static cache (between HTTP requests)

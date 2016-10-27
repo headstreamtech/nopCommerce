@@ -14,7 +14,7 @@ namespace Nop.Plugin.Owin.CookieAuthentication.App_Start
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/login"),
+                LoginPath = new PathString("/Account/Login")
             });
         }
     }
