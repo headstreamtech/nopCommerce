@@ -194,7 +194,7 @@ namespace Nop.Plugin.Api.Controllers
                 newShoppingCartItem.RentalEndDateUtc = null;
             }
 
-            IList<string> warnings = _shoppingCartService.AddToCart(customer, product, shoppingCartType, 0, null, 0M, 
+            IList<string> warnings = _shoppingCartService.AddToCart(customer, product, shoppingCartType, 1, null, 0M, 
                                         shoppingCartItemDelta.Dto.RentalStartDateUtc, shoppingCartItemDelta.Dto.RentalEndDateUtc,
                                         shoppingCartItemDelta.Dto.Quantity ?? 1);
 

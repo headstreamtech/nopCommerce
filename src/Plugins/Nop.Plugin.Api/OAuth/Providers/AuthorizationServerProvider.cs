@@ -89,6 +89,18 @@ namespace Nop.Plugin.Api.Owin.OAuth.Providers
             return base.GrantResourceOwnerCredentials(context);
         }
 
+        public override Task GrantClientCredentials(OAuthGrantClientCredentialsContext context)
+        {
+            var client = context.OwinContext.Get<Client>("oauth:client");
+            var oAuthIdentity = new ClaimsIdentity(context.Options.AuthenticationType);
+            oAuthIdentity.AddClaim(new Claim(ClaimTypes.Name, client.Name));
+            oAuthIdentity.AddClaim(new Claim("client_id", client.ClientId));
+            var ticket = new AuthenticationTicket(oAuthIdentity, new AuthenticationProperties());
+            context.Validated(ticket);
+
+            return base.GrantClientCredentials(context);
+        }
+
         public override Task ValidateClientRedirectUri(OAuthValidateClientRedirectUriContext context)
         {
             IClientService clientService = EngineContext.Current.Resolve<IClientService>();

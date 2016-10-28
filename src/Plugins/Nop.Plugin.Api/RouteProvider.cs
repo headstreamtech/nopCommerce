@@ -9,7 +9,7 @@ using Nop.Web.Framework.Mvc.Routes;
 
 namespace Nop.Plugin.Api
 {
-    public class RouteProvider : IRouteProvider
+    public partial class RouteProvider : IRouteProvider
     {
         public void RegisterRoutes(RouteCollection routes)
         {
