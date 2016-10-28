@@ -169,6 +169,7 @@
     <Compile Include="Authentication\External\UserClaims.cs" />
     <Compile Include="Authentication\External\IClaimsTranslator.cs" />
     <Compile Include="Authentication\External\OpenAuthenticationParameters.cs" />
+    <Compile Include="Authentication\ClaimsAuthenticationService.cs" />
     <Compile Include="Blogs\BlogService.cs" />
     <Compile Include="Blogs\BlogExtensions.cs" />
     <Compile Include="Blogs\IBlogService.cs" />

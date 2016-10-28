@@ -4,11 +4,14 @@ using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Routing;
 using Autofac.Integration.WebApi;
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Extensions;
+using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json;
 using Nop.Core.Infrastructure;
+using Nop.Plugin.Api;
 using Nop.Plugin.Api.Attributes;
 using Nop.Plugin.Api.Constants;
 using Nop.Plugin.Api.Owin.Middleware;
@@ -17,6 +20,7 @@ using Nop.Plugin.Api.Swagger;
 using Owin;
 using Swashbuckle.Application;
 
+[assembly: OwinStartup(typeof(Startup))]
 namespace Nop.Plugin.Api
 {
     public class Startup
@@ -34,6 +38,12 @@ namespace Nop.Plugin.Api
 
         private void ConfigureOAuth(IAppBuilder app)
         {
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                LoginPath = new PathString("/Account/Login")
+            });
+
             // The token endpoint path activates the ValidateClientAuthentication method from the AuthorisationServerProvider.
             var oAuthServerOptions = new OAuthAuthorizationServerOptions()
             {

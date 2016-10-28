@@ -40,6 +40,7 @@ using Nop.Web.Framework.Security.Honeypot;
 using Nop.Web.Models.Common;
 using Nop.Web.Models.Customer;
 using WebGrease.Css.Extensions;
+using System.Security.Claims;
 
 namespace Nop.Web.Controllers
 {
