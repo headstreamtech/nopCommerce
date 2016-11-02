@@ -1,4 +1,5 @@
-﻿.header-menu {
+﻿/* Colours for Branding */
+.header-menu {
     background-color: #392959;
 }
 
@@ -18,4 +19,6 @@
 .category-cap .top-menu a {
     color: #333;
 }
+
+/* Buttons and other elements */
 
