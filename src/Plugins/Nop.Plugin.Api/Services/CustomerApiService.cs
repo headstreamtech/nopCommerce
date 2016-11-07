@@ -144,6 +144,60 @@ namespace Nop.Plugin.Api.Services
             return customerDto;
         }
 
+        public CustomerDto GetCustomerByGuid(Guid customerGuid)
+        {
+            if (customerGuid == Guid.Empty)
+            {
+                return null;
+            }
+
+            // Here we expect to get two records, one for the first name and one for the last name.
+            List<CustomerAttributeMappingDto> customerAttributeMappings = (from customer in _customerRepository.TableNoTracking
+                                                                           join attribute in _genericAttributeRepository.TableNoTracking on customer.Id equals attribute.EntityId
+                                                                           where customer.CustomerGuid == customerGuid && !customer.Deleted &&
+                                                                                 attribute.KeyGroup.Equals(KeyGroup, StringComparison.InvariantCultureIgnoreCase) &&
+                                                                                 (attribute.Key.Equals(FirstName, StringComparison.InvariantCultureIgnoreCase) ||
+                                                                                  attribute.Key.Equals(LastName, StringComparison.InvariantCultureIgnoreCase))
+                                                                           select new CustomerAttributeMappingDto()
+                                                                           {
+                                                                               Attribute = attribute,
+                                                                               Customer = customer
+                                                                           }).ToList();
+
+            CustomerDto customerDto = null;
+
+            // This is in case we have first and last names set for the customer.
+            if (customerAttributeMappings.Count > 0)
+            {
+                // The customer object is the same in all mappings.
+                customerDto = customerAttributeMappings.First().Customer.ToDto();
+
+                foreach (var mapping in customerAttributeMappings)
+                {
+                    if (mapping.Attribute.Key.Equals(FirstName, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        customerDto.FirstName = mapping.Attribute.Value;
+                    }
+                    else if (mapping.Attribute.Key.Equals(LastName, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        customerDto.LastName = mapping.Attribute.Value;
+                    }
+                }
+            }
+            else
+            {
+                // This is when we do not have first and last name set.
+                Customer currentCustomer = _customerRepository.TableNoTracking.FirstOrDefault(customer => customer.CustomerGuid == customerGuid && !customer.Deleted);
+
+                if (currentCustomer != null)
+                {
+                    customerDto = currentCustomer.ToDto();
+                }
+            }
+
+            return customerDto;
+        }
+
         private Dictionary<string, string> EnsureSearchQueryIsValid(string query, Func<string, Dictionary<string, string>> parseSearchQuery)
         {
             if (!string.IsNullOrEmpty(query))

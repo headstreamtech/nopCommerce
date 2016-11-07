@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
@@ -34,6 +35,7 @@ using Nop.Services.Stores;
 namespace Nop.Plugin.Api.Controllers
 {
     [BearerTokenAuthorize]
+    [RoutePrefix("api/customers")]
     public class CustomersController : BaseApiController
     {
         private readonly ICustomerApiService _customerApiService;
@@ -125,7 +127,7 @@ namespace Nop.Plugin.Api.Controllers
         }
 
         /// <summary>
-        /// Retrieve customer by spcified id
+        /// Retrieve customer by specified id
         /// </summary>
         /// <param name="id">Id of the customer</param>
         /// <param name="fields">Fields from the customer you want your json to contain</param>
@@ -135,6 +137,7 @@ namespace Nop.Plugin.Api.Controllers
         [HttpGet]
         [ResponseType(typeof(CustomersRootObject))]
         [GetRequestsErrorInterceptorActionFilter]
+        [Route("{id:int}")]
         public IHttpActionResult GetCustomerById(int id, string fields = "")
         {
             if (id <= 0)
@@ -149,6 +152,40 @@ namespace Nop.Plugin.Api.Controllers
                 return Error(HttpStatusCode.NotFound, "customer", "not found");
             }
             
+            var customersRootObject = new CustomersRootObject();
+            customersRootObject.Customers.Add(customer);
+
+            var json = _jsonFieldsSerializer.Serialize(customersRootObject, fields);
+
+            return new RawJsonActionResult(json);
+        }
+
+        /// <summary>
+        /// Gets the customer by unique identifier.
+        /// </summary>
+        /// <param name="customerGuid">The customer unique identifier.</param>
+        /// <param name="fields">The fields.</param>
+        /// <response code="200">OK</response>
+        /// <response code="404">Not Found</response>
+        /// <response code="401">Unauthorized</response>
+        [HttpGet]
+        [ResponseType(typeof(CustomersRootObject))]
+        [GetRequestsErrorInterceptorActionFilter]
+        [Route("{customerGuid:guid}")]
+        public IHttpActionResult GetCustomerByGuid(Guid customerGuid, string fields = "")
+        {
+            if (customerGuid == Guid.Empty)
+            {
+                return Error(HttpStatusCode.BadRequest, "guid", "invalid guid");
+            }
+
+            CustomerDto customer = _customerApiService.GetCustomerByGuid(customerGuid);
+
+            if (customer == null)
+            {
+                return Error(HttpStatusCode.NotFound, "customer", "not found");
+            }
+
             var customersRootObject = new CustomersRootObject();
             customersRootObject.Customers.Add(customer);
 

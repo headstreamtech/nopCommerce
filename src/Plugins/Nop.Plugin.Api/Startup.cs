@@ -77,6 +77,8 @@ namespace Nop.Plugin.Api
                 NullValueHandling = NullValueHandling.Ignore
             };
 
+            config.MapHttpAttributeRoutes();
+
             config.Routes.MapHttpRoute(
                 name: "authorizeApi",
                 routeTemplate: "OAuth/Authorize",
@@ -98,12 +100,6 @@ namespace Nop.Plugin.Api
                 name: "customerSearch",
                 routeTemplate: "api/customers/search",
                 defaults: new { controller = "Customers", action = "Search" },
-                constraints: new { httpMethod = new HttpMethodConstraint(HttpMethod.Get) });
-
-            config.Routes.MapHttpRoute(
-                name: "customerById",
-                routeTemplate: "api/customers/{id}",
-                defaults: new { controller = "Customers", action = "GetCustomerById" },
                 constraints: new { httpMethod = new HttpMethodConstraint(HttpMethod.Get) });
 
             config.Routes.MapHttpRoute(

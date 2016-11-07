@@ -12,6 +12,8 @@ namespace Nop.Plugin.Api.Services
 
         CustomerDto GetCustomerById(int id);
 
+        CustomerDto GetCustomerByGuid(Guid customerGuid);
+
         Customer GetCustomerEntityById(int id);
 
         IList<CustomerDto> GetCustomersDtos(DateTime? createdAtMin = null, DateTime? createdAtMax = null,

@@ -8,8 +8,23 @@ namespace Nop.Plugin.Api.DTOs.Customers
     {
         private List<int> _roleIds;
 
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
         [JsonProperty("id")]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the customer unique identifier.
+        /// </summary>
+        /// <value>
+        /// The customer unique identifier.
+        /// </value>
+        [JsonProperty("customer_guid")]
+        public Guid CustomerGuid { get; set; }
 
         [JsonProperty("username")]
         public string Username { get; set; }
