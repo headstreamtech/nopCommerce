@@ -38,11 +38,11 @@ namespace Nop.Plugin.Api
 
         private void ConfigureOAuth(IAppBuilder app)
         {
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login")
-            });
+            //app.UseCookieAuthentication(new CookieAuthenticationOptions
+            //{
+            //    AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+            //    LoginPath = new PathString("/Account/Login")
+            //});
 
             // The token endpoint path activates the ValidateClientAuthentication method from the AuthorisationServerProvider.
             var oAuthServerOptions = new OAuthAuthorizationServerOptions()

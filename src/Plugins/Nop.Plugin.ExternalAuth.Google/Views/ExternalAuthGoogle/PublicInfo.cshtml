@@ -1,0 +1,22 @@
+﻿@using Nop.Web.Framework.UI
+@using Nop.Core.Domain.Customers
+@model ExternalAuthenticationSettings
+
+@{
+    Layout = "";  
+}
+<div class="google-login-block">
+    <div class="title">
+        @T("Plugins.ExternalAuth.Google.Login")
+    </div>
+    @if(Model.AutoRegisterEnabled == true)
+    {
+        <div style="margin-bottom: 20px">If a store account does not exist for the Google email, one will be created automatically upon a successful sign in.</div>
+    }
+
+    <a class="btn waves-effect waves-light red darken-2" href="@Url.RouteUrl("Plugin.ExternalAuth.Google.Login", new { ReturnUrl = HttpContext.Current.Request.QueryString["ReturnUrl"] })">
+        <i class="fa fa-google-plus"></i>
+        <span>Sign In</span>
+    </a>
+
+</div>

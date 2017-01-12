@@ -26,6 +26,9 @@
     @Html.Partial("_ExternalAuthentication.Errors")
     <div class="page-body">
         <div class="customer-blocks">
+            <div class="external-authentication">
+                @Html.Action("ExternalMethods", "ExternalAuthentication")
+            </div>
 
             <div class="returning-wrapper fieldset">
                 @using (Html.BeginForm())
@@ -38,12 +41,13 @@
                     {
                         <div class="message-error">@validationSummary</div>
                     }
+
                     <div class="row">
                         @if (Model.UsernamesEnabled)
                         {
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">account_circle</i>
-                                @Html.TextBoxFor(m => m.Username, new { @class = "validate", autofocus = "autofocus" })
+                                @Html.TextBoxFor(m => m.Username, new { @class = "validate" })
                                 @Html.ValidationMessageFor(m => m.Username)
                                 @Html.LabelFor(m => m.Username, new { }, ":")
                             </div>
@@ -52,14 +56,14 @@
                         {
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">email</i>
-                                @Html.TextBoxFor(m => m.Email, new { @class = "email", autofocus = "autofocus" })
+                                @Html.TextBoxFor(m => m.Email, new { @class = "email" })
                                 @Html.ValidationMessageFor(m => m.Email)
                                 @Html.LabelFor(m => m.Email, new { }, ":")
                             </div>
                         }
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock</i>
-                            @Html.PasswordFor(m => m.Password, new { @class = "password", autofocus = "autofocus" })
+                            @Html.PasswordFor(m => m.Password, new { @class = "password" })
                             @Html.LabelFor(m => m.Password, new { }, ":")
                             @Html.ValidationMessageFor(m => m.Password)
                         </div>
@@ -124,9 +128,7 @@
                 </div>
             }
         </div>
-        <div class="external-authentication">
-            @Html.Action("ExternalMethods", "ExternalAuthentication")
-        </div>
+        
         @Html.Action("TopicBlock", "Topic", new { systemName = "LoginRegistrationInfo" })
     </div>
 </div>

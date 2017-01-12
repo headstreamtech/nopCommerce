@@ -551,7 +551,6 @@ label, label + * {
 	max-width: 90%;
 	border: 1px solid #ddd;
 	box-shadow: 0 0 2px rgba(0,0,0,0.15);
-	overflow: hidden;
 	background-color: #fff;
 	/*override jQuery UI styles, do not delete doubled properties*/
 	padding: 0;
@@ -854,7 +853,7 @@ label, label + * {
 	margin: 0 0 1px;
 	padding: 10px 15px;
 	font-size: 20px;
-	color: #fff;
+	color: #1976D2;
 	cursor: pointer;
 	width: 100%;
 }

@@ -12,10 +12,11 @@
     <script type="text/javascript">
         AjaxCart.init(false, '.topcart .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
     </script>
-    <div class="header-menu">
-        @Html.Action("TopMenu", "Catalog")
-    </div>
     <div class="container">
+        <div class="header-menu">
+            @Html.Action("TopMenu", "Catalog")
+        </div>
+
         @Html.Widget("content_before")
 
         @if (IsSectionDefined("Breadcrumb"))

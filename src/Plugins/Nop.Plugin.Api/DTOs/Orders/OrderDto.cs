@@ -20,6 +20,18 @@ namespace Nop.Plugin.Api.DTOs.Orders
         [JsonProperty("id")]
         public string Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets the order identifier
+        /// </summary>
+        [JsonProperty("order_guid")]
+        public Guid OrderGuid { get; set; }
+
+        /// <summary>
+        /// Gets or sets the store identifier.
+        /// </summary>
+        /// <value>
+        /// The store identifier.
+        /// </value>
         [JsonProperty("store_id")]
         public int? StoreId { get; set; }
 

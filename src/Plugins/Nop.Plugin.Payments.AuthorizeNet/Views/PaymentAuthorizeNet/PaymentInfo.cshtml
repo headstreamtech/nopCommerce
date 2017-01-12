@@ -27,9 +27,8 @@
             @Html.LabelFor(model => model.ExpireMonth, false):
         </td>
         <td>
-            @Html.DropDownListFor(model => model.ExpireMonth, Model.ExpireMonths)
-            /
-            @Html.DropDownListFor(model => model.ExpireYear, Model.ExpireYears)
+            @Html.DropDownListFor(model => model.ExpireMonth, Model.ExpireMonths) <span>Month</span>
+            @Html.DropDownListFor(model => model.ExpireYear, Model.ExpireYears) <span>Year</span>
         </td>
     </tr>
     <tr>
